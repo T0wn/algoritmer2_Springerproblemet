@@ -9,15 +9,18 @@ public class Main {
             if (brett.getPossibleMoves().size() > nesteTrekk) {
                 brett.flyttBrikke( brett.getPossibleMoves().get(nesteTrekk).get(0), brett.getPossibleMoves().get(nesteTrekk).get(1) );
                 trekkStatus.push(nesteTrekk);
-                System.out.println(trekkStatus);
-                brett.printBrett();
+//                System.out.println(trekkStatus);
+//                brett.printBrett();
                 finnOgFlytt(brett, 0);
             }
             else {
                 brett.flyttTilbake();
-                brett.printBrett();
+//                brett.printBrett();
                 finnOgFlytt(brett, trekkStatus.pop() + 1);
             }
+        }
+        else {
+            brett.printBrett();
         }
     }
 
@@ -32,7 +35,7 @@ public class Main {
 //        int startY = scanner.nextInt();
 
 //        Sjakkbrett brett = new Sjakkbrett(boardSize, startX, startY);
-        Sjakkbrett brett = new Sjakkbrett(4, 2, 1);
+        Sjakkbrett brett = new Sjakkbrett(5, 1, 1);
         brett.printBrett();
         finnOgFlytt(brett, 0);
 

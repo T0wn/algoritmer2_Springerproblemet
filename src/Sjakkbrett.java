@@ -72,9 +72,7 @@ public class Sjakkbrett {
     }
 
     public void flyttTilbake() {
-        System.out.println("currentPos: [" + currentPos[0] + ", " + currentPos[1] + "]");
         brett[ currentPos[0] ][ currentPos[1] ] = 0;
-        System.out.println(trekknr);
         trekknr -= 2;
         for (int i = 0; i < brett.length; i++) {
             for (int j = 0; j < brett.length; j++) {
@@ -84,7 +82,6 @@ public class Sjakkbrett {
             }
         }
         trekknr++;
-        System.out.println("new currentPos: [" + currentPos[0] + ", " + currentPos[1] + "]");
     }
 
     public boolean isDone() {
