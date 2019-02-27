@@ -3,9 +3,9 @@ import java.util.Stack;
 
 public class Main {
 
-    public static Stack<Integer> trekkStatus = new Stack<Integer>();
+    private static Stack<Integer> trekkStatus = new Stack<Integer>();
 
-    public static void finnOgFlytt(Sjakkbrett brett, int nesteTrekk, boolean firstCall) {
+    private static void finnOgFlytt(Sjakkbrett brett, int nesteTrekk, boolean firstCall) {
         if ( brett.getTrekknr() <= brett.getSquaresInBoard() ) {
             if (trekkStatus.size() == 0 && !firstCall) {
                 System.out.println("Finnes ingen løsning");
