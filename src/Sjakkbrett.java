@@ -5,17 +5,6 @@ public class Sjakkbrett {
     private int trekknr = 1;
     private int[] currentPos = new int[2];
 
-    private void setCurrentPos(int x, int y) {
-        currentPos = new int[]{x, y};
-    }
-
-    public void printCurrentPos() {
-        System.out.println("currentPos: [" + currentPos[0] + ", " + currentPos[1] + "]");
-    }
-
-    public int getTrekknr() { return trekknr; }
-
-    public int getSquaresInBoard() { return brett.length * brett.length; }
 
     public Sjakkbrett(int size, int x, int y) {
         brett = new int[size][size];
@@ -31,6 +20,15 @@ public class Sjakkbrett {
         this.setCurrentPos(x - 1, y - 1);
     }
 
+    private void setCurrentPos(int x, int y) {
+        currentPos = new int[]{x, y};
+    }
+
+    public int getTrekknr() { return trekknr; }
+
+    public int getSquaresInBoard() { return brett.length * brett.length; }
+
+
     public void printBrett() {
         for (int i = 0; i < brett.length; i++) {
             for (int j = 0; j < brett.length; j++) {
@@ -44,6 +42,7 @@ public class Sjakkbrett {
         System.out.print("\n");
     }
 
+
     public ArrayList<ArrayList<Integer>> getPossibleMoves() {
         int[] xSel = {1, 1, -1, -1, 2, 2, -2, -2};
         int[] ySel = {2, -2, 2, -2, 1, -1, 1, -1};
@@ -51,10 +50,10 @@ public class Sjakkbrett {
         ArrayList<ArrayList<Integer>> returner = new ArrayList<ArrayList<Integer>>();
         for (int j = 0; j < 8; j++) {
             ArrayList<Integer> temp = new ArrayList<Integer>();
-//            sjekker om trekket er innenfor brettet
+            // sjekker om trekket er innenfor brettet
             if ( (currentPos[0] + xSel[j]) <= brett.length - 1 && (currentPos[1] + ySel[j]) <= brett.length - 1
                     && (currentPos[0] + xSel[j]) >= 0 && (currentPos[1] + ySel[j]) >= 0 ) {
-//                sjekker om trekket er ledig
+                // sjekker om trekket er ledig
                 if ( brett[ currentPos[0] + xSel[j] ][ currentPos[1] + ySel[j] ] == 0 ) {
                     temp.add(currentPos[0] + xSel[j]);
                     temp.add(currentPos[1] + ySel[j]);
@@ -65,11 +64,13 @@ public class Sjakkbrett {
         return returner;
     }
 
+
     public void flyttBrikke(int x, int y) {
         brett[x][y] = trekknr;
         trekknr++;
         this.setCurrentPos(x, y);
     }
+
 
     public void flyttTilbake() {
         brett[ currentPos[0] ][ currentPos[1] ] = 0;
@@ -82,14 +83,5 @@ public class Sjakkbrett {
             }
         }
         trekknr++;
-    }
-
-    public boolean isDone() {
-        for (int i = 0; i < brett.length; i++) {
-            for (int j = 0; j < brett.length; j++) {
-                if (brett[j][i] == 0) return false;
-            }
-        }
-        return true;
     }
 }
