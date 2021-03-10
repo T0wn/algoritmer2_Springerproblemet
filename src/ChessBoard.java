@@ -9,13 +9,6 @@ public class ChessBoard {
 
     public ChessBoard(int size, int x, int y) {
         board = new int[size][size];
-
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                board[i][j] = 0;
-            }
-        }
-
         moveTo(x-1, y-1);
     }
 
